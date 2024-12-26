@@ -1,0 +1,22 @@
+Standard ML of New Jersey v110.79 [built: Mon Apr 22 10:14:55 2024]
+- use "let_statements.sml";
+[opening let_statements.sml]
+val silly1 = fn : int -> int
+let_statements.sml:14.5 Error: syntax error found at END
+
+uncaught exception Compile [Compile: "syntax error"]
+  raised at: ../compiler/Parse/main/smlfile.sml:15.24-15.46
+             ../compiler/TopLevel/interact/evalloop.sml:44.55
+             ../compiler/TopLevel/interact/evalloop.sml:292.17-292.20
+
+
+Process sml finished
+Standard ML of New Jersey v110.79 [built: Mon Apr 22 10:14:55 2024]
+- use "let_statements.sml";
+[opening let_statements.sml]
+val silly1 = fn : int -> int
+val silly2 = fn : unit -> int
+val it = () : unit
+- 
+
+Process sml finished
