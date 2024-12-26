@@ -3,5 +3,20 @@ fun is_older (d1 : (int * int * int), d2 : (int * int * int)) =
     then true
     else false;
 
+fun number_in_month (dl : (int * int * int) list, month : int) =
+    let
+	fun month_count (lst: (int * int * int) list, count: int) =
+	    case lst of
+		[] => count
+	      | x :: xl =>
+		if (#2 x) = month (* Check if the month in the list element  is equal to the month argument *)
+		then month_count(xl, count + 1)
+		else month_count(xl, count)
+    in
+	month_count(dl, 0) (* Starting the count at 0 *)
+    end;
 
+
+	    
+    
 	
