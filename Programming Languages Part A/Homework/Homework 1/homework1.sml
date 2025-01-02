@@ -6,17 +6,46 @@ fun is_older (d1 : (int * int * int), d2 : (int * int * int)) =
 fun number_in_month (dl : (int * int * int) list, month : int) =
     let
 	fun month_count (lst: (int * int * int) list, count: int) =
-	    case lst of
-		[] => count
-	      | x :: xl =>
-		if (#2 x) = month (* Check if the month in the list element  is equal to the month argument *)
-		then month_count(xl, count + 1)
-		else month_count(xl, count)
+	    if null lst
+	    then count
+	    else
+		if (#2 (hd lst)) = month
+		then month_count(tl lst, count +1)
+		else month_count(tl lst, count)
+				
     in
-	month_count(dl, 0) (* Starting the count at 0 *)
+	month_count(dl, 0)
     end;
 
 
-	    
+
+fun number_in_months (lod : (int * int * int) list, lom : int list) =
+    let
+        fun month_count (lst : (int * int * int) list, count : int) =
+            if null lst then count
+            else
+                let
+                    fun month_list_traverse (month : int, lomi : int list) =
+                        if null lomi then false
+                        else (hd lomi = month) orelse month_list_traverse (month, tl lomi)
+                in
+                    if month_list_traverse (#2 (hd lst), lom)
+                    then month_count (tl lst, count + 1)
+                    else month_count (tl lst, count)
+                end
+    in
+        month_count (lod, 0)
+    end;
+
+
+
+
+
+
+
+
+				
+				
+			    
     
 	
