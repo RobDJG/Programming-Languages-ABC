@@ -39,7 +39,17 @@ fun number_in_months (lod : (int * int * int) list, lom : int list) =
 
 
 
+fun dates_in_month(lod : (int * int * int) list, month : int) =
+    if null lod
+    then []
+    else
+	if #2 (hd lod) = month
+	then  (hd lod) :: dates_in_month(tl lod, month)
+	else  dates_in_month(tl lod, month);
 
+
+	    
+	    
 
 
 
