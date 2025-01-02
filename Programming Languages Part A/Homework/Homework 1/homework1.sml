@@ -48,7 +48,24 @@ fun dates_in_month(lod : (int * int * int) list, month : int) =
 	else  dates_in_month(tl lod, month);
 
 
-	    
+fun dates_in_months(lod : (int * int * int) list, lom : int list) =
+    if null lod
+    then []
+    else
+	let
+	    fun lom_traverse (date : (int * int * int), lomi: int list) =
+		if null lomi
+		then false
+		else #2 date = hd lomi orelse lom_traverse(date , tl lomi)
+	in
+	    if lom_traverse(hd lod, lom)
+	    then hd lod :: dates_in_months(tl lod, lom)
+	    else dates_in_months(tl lod, lom)
+	end;
+
+    
+    
+    
 	    
 
 
