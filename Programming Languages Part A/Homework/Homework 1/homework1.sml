@@ -78,7 +78,21 @@ fun get_nth(los : string list, index : int) =
 	end;
 
 				  
-		
+fun date_to_string(date : int * int * int) =
+    let
+	val lom = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+	val formatted = get_nth(lom , #2 date) ^ " " ^
+			Int.toString (#3 date) ^ ", " ^
+			Int.toString (#1 date)
+										 		
+    in
+	formatted
+    end;
+
+
+										       
+										       
+		      
     
     
     
