@@ -106,10 +106,24 @@ fun number_before_reaching_sum(sum : int, loi : int list) =
 	end;
 
 
+fun what_month(day : int) =
+    let
+	val loi = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	val month = number_before_reaching_sum(day, loi)
+    in
+	if month = 12
+	then 12
+	else month + 1
+			 
+    end;
 
-										       
-										       
+
 		      
+										       
+										       
+
+
+
     
     
     
