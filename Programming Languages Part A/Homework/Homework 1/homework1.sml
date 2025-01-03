@@ -63,6 +63,24 @@ fun dates_in_months(lod : (int * int * int) list, lom : int list) =
 	    else dates_in_months(tl lod, lom)
 	end;
 
+
+fun get_nth(los : string list, index : int) =
+    if null los
+    then ""
+    else
+	let
+	    fun list_traverse(losi : string list, count: int) =
+		if index = count
+		then (hd losi)
+		else list_traverse(tl losi, count + 1)
+	in
+	   list_traverse(los, 1)
+	end;
+
+				  
+		
+    
+    
     
     
     
