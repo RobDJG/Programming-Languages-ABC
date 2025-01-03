@@ -90,6 +90,23 @@ fun date_to_string(date : int * int * int) =
     end;
 
 
+fun number_before_reaching_sum(sum : int, loi : int list) =
+    if null loi
+    then 0
+    else
+	let
+	    fun loi_traverse(loim : int list, count : int, total : int) =
+		if total < sum
+		then loi_traverse( tl loim, count + 1, total + hd (tl loim) )
+		else
+		    count
+
+	in
+	    loi_traverse(loi, 0, hd loi)
+	end;
+
+
+
 										       
 										       
 		      
