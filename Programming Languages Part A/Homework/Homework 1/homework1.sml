@@ -143,7 +143,7 @@ fun oldest (lod : (int * int * int) list) =
 			val tl_date = valOf tl_ans
 					    
 		    in
-			if date_to_int(hd xs) > date_to_int(tl_date)
+			if date_to_int(hd xs) < date_to_int(tl_date)
 			then SOME (hd xs)
 			else SOME tl_date
 		    end;
