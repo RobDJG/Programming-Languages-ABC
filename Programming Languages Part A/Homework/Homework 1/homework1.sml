@@ -118,9 +118,13 @@ fun what_month(day : int) =
     end;
 
 
-		      
-										       
-										       
+fun month_range (day1 : int, day2 : int) =
+    if day1 > day2
+    then []
+    else
+	what_month(day1)::month_range(day1 + 1, day2)
+
+				     
 
 
 
