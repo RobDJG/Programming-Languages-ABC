@@ -124,17 +124,38 @@ fun month_range (day1 : int, day2 : int) =
     else
 	what_month(day1)::month_range(day1 + 1, day2)
 
-				     
 
-
-
-    
-    
-    
-    
-    
+fun oldest (lod : (int * int * int) list) =
+    if null lod
+    then NONE
+    else
+	let
+	    fun date_to_int (date: (int * int * int)) =
+		
+		    #1 date + #2 date + #3 date
 	    
+	    fun lod_traverse (xs : (int * int * int) list) =
+		if null (tl xs)
+		then SOME (hd xs)
+		else
+		    let
+			val tl_ans = lod_traverse(tl xs)
+			val tl_date = valOf tl_ans
+					    
+		    in
+			if date_to_int(hd xs) > date_to_int(tl_date)
+			then SOME (hd xs)
+			else SOME tl_date
+		    end;
 
+	in
+	    lod_traverse lod
+	    
+			 
+	end;
+
+
+	   
 
 
 
