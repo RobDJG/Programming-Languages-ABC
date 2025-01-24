@@ -1,0 +1,15 @@
+val x = {bar=(1+2, true andalso true), foo=3+4, baz=(false, 9)};
+
+val inner_result =
+    let
+        val a = 10
+    in
+        a + 1
+    end;
+
+val outer_result =
+    let
+        val a = 5
+    in
+        a + 1
+    end;
