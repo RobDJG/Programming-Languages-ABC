@@ -25,6 +25,7 @@ fun max_constant expression =
 	    end
 		
     in
+	
     case expression of
 	Constant i => i
       | Negate e2 => max_constant e2
