@@ -17,14 +17,9 @@ function for max of two ints. There is: Int.max  *)
 fun max_constant expression =
     let
 	fun is_greater (e1, e2) =
-	    let
-		val max1 = max_constant e1
-		val max2 = max_constant e2
-	    in
-		if max1 > max2 then max1 else max2
-	    end
-		
+	    Int.max(max_constant e1, max_constant e2)
     in
+	
     case expression of
 	Constant i => i
       | Negate e2 => max_constant e2
