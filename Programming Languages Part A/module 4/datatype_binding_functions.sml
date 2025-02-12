@@ -18,12 +18,13 @@ fun max_constant expression =
     let
 	fun is_greater (e1, e2) =
 	    Int.max(max_constant e1, max_constant e2)
+		
     in
-	
     case expression of
 	Constant i => i
       | Negate e2 => max_constant e2
-      | Add(e1, e2) => is_greater(e1, e2)							      | Multiply(e1, e2) => is_greater(e1, e2) 
+      | Add(e1, e2) => is_greater(e1, e2)
+      | Multiply(e1, e2) => is_greater(e1, e2) 
 												     
     end
 	
