@@ -13,11 +13,40 @@ fun all_except_option (str, los) =
     case los of
 	[] => NONE
        |x::los'  => if same_string(str,x)
-		   then SOME los'
+		    then SOME los'
 		    else
 			case all_except_option(str, los') of
 			    NONE => NONE
 			   |SOME y  => SOME (x :: y)
+
+					    
+fun get_substitutions1 (llos,str) =
+    case llos of
+	[] => []
+      | x :: xs' =>
+	case all_except_option(str, x) of
+	    NONE => get_substitutions1(xs', str)
+	  | SOME y => y @ get_substitutions1(xs', str)
+
+fun get_substitutions2 (llos,str) =
+    case llos of
+	[] => []
+      | x :: xs' =>
+	let fun aux (llos, acc) =
+		case all_except_option(str, x) of
+		    NONE => aux(xs', acc)
+		  | SOME y =>  aux(xs', y @ acc)
+	in
+	    aux(llos, [])
+	end
+	    
+					    
+val answer1 =get_substitutions2([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]], "Fred");
+(* answer: ["Fredrick","Freddie","F"] *)
+val answer2 = get_substitutions1([["Fred","Fredrick"],["Jeff","Jeffrey"],["Geoff","Jeff","Jeffrey"]], "Jeff");
+(* answer: ["Jeffrey","Geoff","Jeffrey"] *)
+
+					    
 
 					    
 						   
