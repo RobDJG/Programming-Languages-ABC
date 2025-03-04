@@ -37,17 +37,16 @@ fun dates_in_months (lod, lom) =
 
 	
 fun get_nth (los, index) =
-    
-	let
-	    fun list_traverse (losi, count) =
-		case losi of
-		    [] => ""
-		  | y :: ys =>
-		    if count = index
-		    then y
-		    else list_traverse(ys, count + 1)
-	in
-	    list_traverse(los, 1)
-	end;
+    let
+	fun list_traverse (losi, count) =
+	    case losi of
+		[] => ""
+	      | y :: ys =>
+		if count = index
+		then y
+		else list_traverse(ys, count + 1)
+    in
+	list_traverse(los, 1)
+    end;
 	    
 			   
