@@ -29,5 +29,12 @@ fun dates_in_month (lod, target_month) =
 	else dates_in_month(tl, target_month)
 
 			   
-								      
-								      
+fun dates_in_months (lod, lom) =
+    case lom of
+	[] => []
+      | x :: xs =>
+	dates_in_month(lod, x) :: dates_in_months(lod, xs);
+
+	
+
+			   
