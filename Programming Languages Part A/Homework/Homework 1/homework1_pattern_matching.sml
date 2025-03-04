@@ -14,7 +14,9 @@ fun number_in_month (lod, month) =
 			    
     
 fun number_in_months (lod, lom) =
-    case lod of
+    case lom of
 	[] => 0
-       |(y, m, d)::tl  =>
+      | x::xs =>
+	number_in_month(lod, x) + number_in_months(lod, xs);
+		
 	
