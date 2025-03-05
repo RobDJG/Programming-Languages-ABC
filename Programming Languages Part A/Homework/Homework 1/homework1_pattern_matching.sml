@@ -60,3 +60,20 @@ fun date_to_string (year, month, day) =
     in
 	formatted
     end;
+
+
+fun number_before_reaching_sum (sum, lon) =
+    let
+	fun list_traverse(loni, count, add) =
+	    case loni of
+		[] => count
+	      | x :: xs =>
+		if (add + x) >= sum
+		then count
+		else list_traverse(xs, count + 1, add + x)
+    in
+	list_traverse(lon, 0, 0)
+    end;
+
+
+
