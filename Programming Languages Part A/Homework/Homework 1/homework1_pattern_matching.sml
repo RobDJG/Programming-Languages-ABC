@@ -37,17 +37,26 @@ fun dates_in_months (lod, lom) =
 
 	
 fun get_nth (los, index) =
-    
-	let
-	    fun list_traverse (losi, count) =
-		case losi of
-		    [] => ""
-		  | y :: ys =>
-		    if count = index
-		    then y
-		    else list_traverse(ys, count + 1)
-	in
-	    list_traverse(los, 1)
-	end;
+    let
+	fun list_traverse (losi, count) =
+	    case losi of
+		[] => ""
+	      | y :: ys =>
+		if count = index
+		then y
+		else list_traverse(ys, count + 1)
+    in
+	list_traverse(los, 1)
+    end;
 	    
-			   
+
+fun date_to_string (year, month, day) =
+    let
+	val lom = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+	val formatted = get_nth(lom , month) ^ " " ^
+			Int.toString (day) ^ ", " ^
+			Int.toString (year)
+										 		
+    in
+	formatted
+    end;
