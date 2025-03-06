@@ -8,21 +8,35 @@ fun same_string(s1 : string, s2 : string) =
 
 (* put your solutions for problem 1 here *)
 
+(* Return NONE if str not found in the list, but if found,
+ return the list as an option but without str*)
+	     
 fun all_except_option (str, los) =
     case los of
 	[] => NONE
+      | head :: tail =>
+	if same_string(str, head)
+	then SOME tail
+	else
+	    case all_except_option(str, tail) of
+		NONE => NONE
+	       |SOME y  => SOME (head :: y)
+					    
+
+fun get_substitutions1 (str, llos) =
+    case llos of
+	[] => []
       | x :: xs =>
-	let
-	    fun list_traverse (list)=
-		case list of
-		    [] => []
-		  | head :: tail =>
-		    if same_string(head, str)
-		    then xs
-		    else x :: list_traverse(tail)
-	in
-	    SOME (list_traverse los)
-	end;
+	case all_except_option(str, x) of
+	    NONE => get_substitutions1(str, xs)
+	  | SOME y => y @ get_substitutions1(str, xs)
+						
+
+					      
+						   
+
+					    
+					   
 	    
     
 
