@@ -101,4 +101,5 @@ fun all_same_color (loc) =
 	(card_color(head) = card_color(neck)
 	 andalso all_same_color (neck ::rest))
 			     
+fun sum_cards (loc) =
     
