@@ -23,16 +23,28 @@ fun all_except_option (str, los) =
 	       |SOME y  => SOME (head :: y)
 					    
 
-fun get_substitutions1 (str, llos) =
+fun get_substitutions1 (llos, str) =
     case llos of
 	[] => []
       | x :: xs =>
 	case all_except_option(str, x) of
-	    NONE => get_substitutions1(str, xs)
-	  | SOME y => y @ get_substitutions1(str, xs)
+	    NONE => get_substitutions1(xs, str)
+	  | SOME y => y @ get_substitutions1(xs, str)
 						
 
-					      
+(*
+
+string * list of string list -> list of string
+
+Return NONE if str not found in the list, but if found,
+ return the list as an option but without str, but in this case
+using a tail recursive function.
+
+*)
+
+fun get_substitutions2 (llos, str) =
+    
+					    
 						   
 
 					    
