@@ -84,3 +84,13 @@ fun card_value (suit, rank) =
 	Num i => i
       | Ace =>  11
       | _ => 10
+
+fun remove_card (loc, card, except) =
+    case loc of
+	[] => raise except
+      | x::xs =>
+	if x = card
+	then xs
+	else x :: remove_card(xs, card, except)
+			     
+    
