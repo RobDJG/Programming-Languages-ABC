@@ -112,3 +112,20 @@ fun sum_cards (loc) =
 	aux(loc, 0)
     end
 	
+
+fun score (loc, goal) =
+    let
+	val sum = sum_cards (loc)
+
+	fun preliminary_score (n) =
+	    if n > goal
+	    then 3 * (n - goal)
+	    else (goal - n)
+    in
+	if all_same_color(loc)
+	then preliminary_score(sum) div 2
+	else preliminary_score(sum)
+    end
+	
+	    
+		 
