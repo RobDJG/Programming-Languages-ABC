@@ -101,4 +101,14 @@ fun all_same_color (loc) =
 	(card_color(head) = card_color(neck)
 	 andalso all_same_color (neck ::rest))
 			     
-    
+fun sum_cards (loc) =
+    let
+	fun aux(n, acc) =
+	    case n of
+		[] => acc
+	      | x::xs =>
+		aux(xs, card_value(x) + acc)
+    in
+	aux(loc, 0)
+    end
+	
