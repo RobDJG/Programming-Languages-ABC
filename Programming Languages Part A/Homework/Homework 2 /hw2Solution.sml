@@ -28,19 +28,17 @@ fun get_substitutions1 (llos,str) =
 	    NONE => get_substitutions1(xs', str)
 	  | SOME y => y @ get_substitutions1(xs', str)
 					    
-
-fun get_substitutions2 (llos,str) =
-    case llos of
-	[] => []
-      | x :: xs' =>
-	let fun aux (llos, acc) =
-		case all_except_option(str, x) of
-		    NONE => aux(xs', acc)
-		  | SOME y =>  aux(xs', y @ acc)
-	in
-	    aux(llos, [])
-	end
-
+					    
+fun get_substitutions2 (llos, str) =
+    let
+	fun aux ([], acc) = acc
+         | aux (x::xs, acc) =
+           case all_except_option(str, x) of
+                 NONE => aux(xs, acc)
+               | SOME y => aux(xs, acc @ y)
+    in
+	aux(llos, [])
+    end
 
 fun similar_names (llos, {first, middle, last}) =
     case llos of
